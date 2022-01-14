@@ -11,7 +11,6 @@ namespace AlarmClock
             SetTabPageWithForm(AlarmClockTabPage, new AlarmClockForm());
             SetTabPageWithForm(StopwatchTabPage, new StopwatchForm());
             SetTabPageWithForm(CountdownTabPage, new CountdownForm());
-            SetTabPageWithForm(TimezoneTabPage, new TimezoneForm());
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
