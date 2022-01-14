@@ -1,10 +1,17 @@
-﻿using System;
+﻿using AlarmClock.Helper;
+using System;
+using System.Media;
 using System.Windows.Forms;
 
 namespace AlarmClock.Forms
 {
     public partial class AlarmClockForm : Form
     {
+        /// <summary>
+        /// 音效播放器
+        /// </summary>
+        SoundPlayer Player;
+
         /// <summary>
         /// 時區
         /// </summary>
@@ -23,6 +30,7 @@ namespace AlarmClock.Forms
         public AlarmClockForm()
         {
             InitializeComponent();
+            Player = new SoundPlayer();
             Timezone = 8;
 
             // 初始化下拉選單
@@ -36,6 +44,7 @@ namespace AlarmClock.Forms
             }
             HourComboBox.SelectedIndex = 0;
             MinuteComboBox.SelectedIndex = 0;
+            AlarmTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
         }
 
         /// <summary>
@@ -93,16 +102,43 @@ namespace AlarmClock.Forms
 
             if (IsOpen)
             {
-                if (AlarmTime.Hour == now.Hour && AlarmTime.Minute == now.Minute)
+                if (AlarmTime.Hour == now.Hour && AlarmTime.Minute == now.Minute && now.Second == 0)
                 {
                     IsOpen = false;
                     SwithBtn.BackgroundImage = Properties.Resources.switch_button_off;
 
                     string alarmText = AlarmTextBox.Text;
+                    Ringing();
                     // 延遲30秒自動關閉的訊息框
-                    MessageBox.Show(new DelayCloseForm(30 * 1000), alarmText, "鬧鐘");
+                    var result =  MessageBox.Show(new DelayCloseForm(10 * 1000), alarmText, "鬧鐘");
+                    Player.Stop();
+
+                    // 若沒在限定時間內手動關閉鬧鐘就寄信
+                    if (result != DialogResult.OK)
+                    {
+                        SMTPService service = new SMTPService();
+                        string email = EmailTextBox.Text;
+                        string subject = "鬧鐘錯過提醒";
+                        string body = "提醒：您已錯過" + AlarmTime.Hour + "時" + AlarmTime.Minute + "分的鬧鐘。";
+                        bool sendResult = service.SendEmail(email, subject, body);
+                        if (!sendResult)
+                        {
+                            MessageBox.Show(new DelayCloseForm(10 * 1000), "信件寄送失敗");
+                        }
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// 響鈴
+        /// </summary>
+        private void Ringing()
+        {
+            Player.Stream = Properties.Resources.yisell_sound_alarmClock;
+
+            // 循環播放
+            Player.PlayLooping();
         }
 
         /// <summary>

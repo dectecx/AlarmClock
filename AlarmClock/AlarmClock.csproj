@@ -58,9 +58,6 @@
     <Compile Include="Forms\DelayCloseForm.Designer.cs">
       <DependentUpon>DelayCloseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TempForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\ClockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +82,7 @@
     <Compile Include="Forms\TimezoneForm.Designer.cs">
       <DependentUpon>TimezoneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\SMTPService.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +133,7 @@
     <Content Include="Resources\Ringin.wav" />
     <Content Include="Resources\switch_button_off.png" />
     <Content Include="Resources\switch_button_on.png" />
+    <Content Include="Resources\yisell_sound_alarmClock.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -88,5 +88,14 @@ namespace AlarmClock.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 System.IO.MemoryStream 的類型 System.IO.UnmanagedMemoryStream 當地語系化資源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream yisell_sound_alarmClock {
+            get {
+                return ResourceManager.GetStream("yisell_sound_alarmClock", resourceCulture);
+            }
+        }
     }
 }

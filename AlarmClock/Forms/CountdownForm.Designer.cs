@@ -125,6 +125,7 @@
             // 
             // HourComboBox
             // 
+            this.HourComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HourComboBox.FormattingEnabled = true;
             this.HourComboBox.Location = new System.Drawing.Point(51, 99);
             this.HourComboBox.Name = "HourComboBox";
@@ -133,6 +134,7 @@
             // 
             // MinuteComboBox
             // 
+            this.MinuteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MinuteComboBox.FormattingEnabled = true;
             this.MinuteComboBox.Location = new System.Drawing.Point(120, 99);
             this.MinuteComboBox.Name = "MinuteComboBox";
@@ -141,6 +143,7 @@
             // 
             // SecondComboBox
             // 
+            this.SecondComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SecondComboBox.FormattingEnabled = true;
             this.SecondComboBox.Location = new System.Drawing.Point(189, 99);
             this.SecondComboBox.Name = "SecondComboBox";

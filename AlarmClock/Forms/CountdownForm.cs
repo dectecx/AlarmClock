@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Media;
 using System.Windows.Forms;
 
 namespace AlarmClock.Forms
 {
     public partial class CountdownForm : Form
     {
+        /// <summary>
+        /// 音效播放器
+        /// </summary>
+        SoundPlayer Player;
+
         /// <summary>
         /// 倒數時間
         /// </summary>
@@ -13,6 +19,7 @@ namespace AlarmClock.Forms
         public CountdownForm()
         {
             InitializeComponent();
+            Player = new SoundPlayer();
             Reset();
 
             // 初始化下拉選單
@@ -45,10 +52,23 @@ namespace AlarmClock.Forms
                 countdownTime = new TimeSpan(0, 0, 0);
                 CountdownLabel.Text = "00:00:00";
                 CountdownTimer.Stop();
+                Ringing();
                 // 延遲10秒自動關閉的訊息框
                 MessageBox.Show(new DelayCloseForm(10 * 1000), "倒數時間到！", "倒數器");
+                Player.Stop();
                 Reset();
             }
+        }
+
+        /// <summary>
+        /// 響鈴
+        /// </summary>
+        private void Ringing()
+        {
+            Player.Stream = Properties.Resources.Ringin;
+
+            // 循環播放
+            Player.PlayLooping();
         }
 
         /// <summary>
