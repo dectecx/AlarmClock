@@ -127,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Ringin.wav" />
+    <Content Include="Resources\switch_button_off.png" />
+    <Content Include="Resources\switch_button_on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,12 +8,34 @@ namespace AlarmClock.Forms
         /// <summary>
         /// 時區
         /// </summary>
-        private int timezone;
+        private int Timezone;
+
+        /// <summary>
+        /// 是否開啟鬧鐘
+        /// </summary>
+        private bool IsOpen;
+
+        /// <summary>
+        /// 鬧鐘時間
+        /// </summary>
+        private DateTime AlarmTime;
 
         public AlarmClockForm()
         {
             InitializeComponent();
-            timezone = 8;
+            Timezone = 8;
+
+            // 初始化下拉選單
+            for (int i = 0; i < 24; i++)
+            {
+                HourComboBox.Items.Insert(i, i);
+            }
+            for (int i = 0; i < 60; i++)
+            {
+                MinuteComboBox.Items.Insert(i, i);
+            }
+            HourComboBox.SelectedIndex = 0;
+            MinuteComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -21,7 +43,7 @@ namespace AlarmClock.Forms
         /// </summary>
         public int GetTimezone()
         {
-            return this.timezone;
+            return Timezone;
         }
 
         /// <summary>
@@ -30,7 +52,13 @@ namespace AlarmClock.Forms
         /// <param name="timezone">時區</param>
         public void SetTimezone(int timezone)
         {
-            this.timezone = timezone;
+            // 更新鬧鐘原本設定的時間
+            int subHour = timezone - Timezone;       // 計算 新設定的時區 與 原先設定的時區 時間差
+            AlarmTime = AlarmTime.AddHours(subHour); // 鬧鐘加上時間差
+            HourComboBox.SelectedIndex = AlarmTime.Hour;
+
+            // 更新時區
+            Timezone = timezone;
             if (timezone == 0)
             {
                 TimeZoneBtn.Text = "UTC";
@@ -56,12 +84,61 @@ namespace AlarmClock.Forms
         }
 
         /// <summary>
-        /// 系統時間timer
+        /// 當前時間timer
         /// </summary>
-        private void SysTimer_Tick(object sender, EventArgs e)
+        private void NowTimer_Tick(object sender, EventArgs e)
         {
-            DateTime now = DateTime.UtcNow.AddHours(timezone);
-            NowLabel.Text = now.ToString();
+            DateTime now = DateTime.UtcNow.AddHours(Timezone);
+            NowLabelText.Text = now.ToString();
+
+            if (IsOpen)
+            {
+                if (AlarmTime.Hour == now.Hour && AlarmTime.Minute == now.Minute && now.Second == 0)
+                {
+                    IsOpen = false;
+                    SwithBtn.BackgroundImage = Properties.Resources.switch_button_off;
+
+                    string alarmText = AlarmTextBox.Text;
+                    MessageBox.Show(alarmText, "鬧鐘響了！");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 鬧鐘開關
+        /// </summary>
+        private void SwithBtn_Click(object sender, EventArgs e)
+        {
+            if (IsOpen)
+            {
+                IsOpen = false;
+                SwithBtn.BackgroundImage = Properties.Resources.switch_button_off;
+            }
+            else
+            {
+                IsOpen = true;
+                SwithBtn.BackgroundImage = Properties.Resources.switch_button_on;
+            }
+        }
+
+        /// <summary>
+        /// 鬧鐘小時更新
+        /// </summary>
+        private void HourComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int hour = Convert.ToInt32(HourComboBox.SelectedItem);
+            int minute = Convert.ToInt32(MinuteComboBox.SelectedItem);
+            AlarmTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 0);
+        }
+
+        /// <summary>
+        /// 鬧鐘分鐘更新
+        /// </summary>
+        private void MinuteComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int hour = Convert.ToInt32(HourComboBox.SelectedItem);
+            int minute = Convert.ToInt32(MinuteComboBox.SelectedItem);
+            AlarmTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 0);
         }
     }
 }
