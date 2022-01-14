@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AlarmClock.Forms
@@ -38,12 +31,37 @@ namespace AlarmClock.Forms
         public void SetTimezone(int timezone)
         {
             this.timezone = timezone;
+            if (timezone == 0)
+            {
+                TimeZoneBtn.Text = "UTC";
+            }
+            else if (timezone > 0)
+            {
+                TimeZoneBtn.Text = "UTC+" + timezone.ToString();
+            }
+            else
+            {
+                TimeZoneBtn.Text = "UTC" + timezone.ToString();
+            }
         }
 
+        /// <summary>
+        /// 時區切換按鈕
+        /// </summary>
         private void TimeZoneBtn_Click(object sender, EventArgs e)
         {
+            // 顯示時區設定Form
             Form form = new TimezoneForm(this);
             form.Show();
+        }
+
+        /// <summary>
+        /// 系統時間timer
+        /// </summary>
+        private void SysTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.UtcNow.AddHours(timezone);
+            NowLabel.Text = now.ToString();
         }
     }
 }

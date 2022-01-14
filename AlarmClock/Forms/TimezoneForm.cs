@@ -21,7 +21,6 @@ namespace AlarmClock.Forms
             InitializeComponent();
             this.alarmClockForm = alarmClockForm;
             this.CurrentSelectedZone = alarmClockForm.GetTimezone();
-            alarmClockForm.SetTimezone(0);
 
             // 初始化所有按鈕的顏色、Click事件
             ResetBtnColor();
@@ -33,7 +32,7 @@ namespace AlarmClock.Forms
                 {
                     SetBtnColor(btn);
                 }
-                btn.Tag = i;
+                btn.Tag = i * -1;
                 btn.Click += new EventHandler(Common_ZoneXXBtn_Click);
             }
             // UTC 、 UTC+1 ~ UTC+12
@@ -102,6 +101,7 @@ namespace AlarmClock.Forms
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             alarmClockForm.SetTimezone(CurrentSelectedZone);
+            this.Close();
         }
     }
 }
