@@ -50,9 +50,9 @@
             this.CountdownLabel.Location = new System.Drawing.Point(78, 96);
             this.CountdownLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CountdownLabel.Name = "CountdownLabel";
-            this.CountdownLabel.Size = new System.Drawing.Size(190, 40);
+            this.CountdownLabel.Size = new System.Drawing.Size(145, 40);
             this.CountdownLabel.TabIndex = 0;
-            this.CountdownLabel.Text = "00:00:00:00";
+            this.CountdownLabel.Text = "00:00:00";
             this.CountdownLabel.Visible = false;
             // 
             // StartBtn
@@ -80,7 +80,6 @@
             // 
             // CountdownTimer
             // 
-            this.CountdownTimer.Interval = 1000;
             this.CountdownTimer.Tick += new System.EventHandler(this.CountdownTimer_Tick);
             // 
             // EndBtn

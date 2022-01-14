@@ -6,7 +6,7 @@ namespace AlarmClock.Forms
     public partial class CountdownForm : Form
     {
         /// <summary>
-        /// 碼表時間
+        /// 倒數時間
         /// </summary>
         private TimeSpan countdownTime;
 
@@ -37,17 +37,15 @@ namespace AlarmClock.Forms
         {
             if (countdownTime > new TimeSpan(0, 0, 0))
             {
-                CountdownLabel.Text = countdownTime.Hours.ToString("00") + ":" +
-                    countdownTime.Minutes.ToString("00") + ":" +
-                    countdownTime.Seconds.ToString("00");
-                countdownTime = countdownTime.Add(new TimeSpan(0, 0, -1));
+                CountdownLabel.Text = countdownTime.Hours.ToString("00") + ":" + countdownTime.Minutes.ToString("00") + ":" + countdownTime.Seconds.ToString("00");
+                countdownTime = countdownTime.Add(new TimeSpan(0, 0, 0, 0, -100));
             }
             else
             {
                 countdownTime = new TimeSpan(0, 0, 0);
                 CountdownLabel.Text = "00:00:00";
                 CountdownTimer.Stop();
-                MessageBox.Show("時間到囉~");
+                MessageBox.Show("倒數時間到！");
                 Reset();
             }
         }
