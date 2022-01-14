@@ -110,7 +110,7 @@ namespace AlarmClock.Forms
                     string alarmText = AlarmTextBox.Text;
                     Ringing();
                     // 延遲30秒自動關閉的訊息框
-                    var result =  MessageBox.Show(new DelayCloseForm(10 * 1000), alarmText, "鬧鐘");
+                    var result =  MessageBox.Show(new DelayCloseForm(30 * 1000), alarmText, "鬧鐘");
                     Player.Stop();
 
                     // 若沒在限定時間內手動關閉鬧鐘就寄信
