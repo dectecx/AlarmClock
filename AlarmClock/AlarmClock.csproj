@@ -52,7 +52,7 @@
     <Compile Include="Forms\AlarmClockForm.Designer.cs">
       <DependentUpon>AlarmClockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Class1.cs">
+    <Compile Include="Forms\TempForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ClockForm.cs">
@@ -87,6 +87,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AlarmClockForm.resx">
+      <DependentUpon>AlarmClockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CountdownForm.resx">
+      <DependentUpon>CountdownForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StopwatchForm.resx">
+      <DependentUpon>StopwatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TimezoneForm.resx">
+      <DependentUpon>TimezoneForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
