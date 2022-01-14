@@ -52,6 +52,12 @@
     <Compile Include="Forms\AlarmClockForm.Designer.cs">
       <DependentUpon>AlarmClockForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DelayCloseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DelayCloseForm.Designer.cs">
+      <DependentUpon>DelayCloseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TempForm.cs">
       <SubType>Form</SubType>
     </Compile>

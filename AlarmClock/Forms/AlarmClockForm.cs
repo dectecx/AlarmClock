@@ -93,13 +93,14 @@ namespace AlarmClock.Forms
 
             if (IsOpen)
             {
-                if (AlarmTime.Hour == now.Hour && AlarmTime.Minute == now.Minute && now.Second == 0)
+                if (AlarmTime.Hour == now.Hour && AlarmTime.Minute == now.Minute)
                 {
                     IsOpen = false;
                     SwithBtn.BackgroundImage = Properties.Resources.switch_button_off;
 
                     string alarmText = AlarmTextBox.Text;
-                    MessageBox.Show(alarmText, "鬧鐘響了！");
+                    // 延遲30秒自動關閉的訊息框
+                    MessageBox.Show(new DelayCloseForm(30 * 1000), alarmText, "鬧鐘");
                 }
             }
         }

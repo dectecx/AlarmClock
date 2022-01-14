@@ -45,7 +45,8 @@ namespace AlarmClock.Forms
                 countdownTime = new TimeSpan(0, 0, 0);
                 CountdownLabel.Text = "00:00:00";
                 CountdownTimer.Stop();
-                MessageBox.Show("倒數時間到！");
+                // 延遲10秒自動關閉的訊息框
+                MessageBox.Show(new DelayCloseForm(10 * 1000), "倒數時間到！", "倒數器");
                 Reset();
             }
         }
