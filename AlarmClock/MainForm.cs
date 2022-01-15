@@ -8,22 +8,10 @@ namespace AlarmClock
         public MainForm()
         {
             InitializeComponent();
+            // 設定頁籤
             SetTabPageWithForm(AlarmClockTabPage, new AlarmClockForm());
             SetTabPageWithForm(StopwatchTabPage, new StopwatchForm());
             SetTabPageWithForm(CountdownTabPage, new CountdownForm());
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            switch ((sender as TabControl).SelectedIndex)
-            {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-            }
         }
 
         /// <summary>

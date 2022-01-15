@@ -8,7 +8,7 @@ namespace AlarmClock.Forms
         /// <summary>
         /// 碼表時間
         /// </summary>
-        private TimeSpan stopwatchTime;
+        private TimeSpan StopwatchTime;
 
         public StopwatchForm()
         {
@@ -21,8 +21,8 @@ namespace AlarmClock.Forms
         /// </summary>
         private void StopwatchTimer_Tick(object sender, EventArgs e)
         {
-            StopwatchLabel.Text = stopwatchTime.Hours.ToString("00") + ":" + stopwatchTime.Minutes.ToString("00") + ":" + stopwatchTime.Seconds.ToString("00");
-            stopwatchTime = stopwatchTime.Add(new TimeSpan(0, 0, 0, 0, 100));
+            StopwatchLabel.Text = StopwatchTime.Hours.ToString("00") + ":" + StopwatchTime.Minutes.ToString("00") + ":" + StopwatchTime.Seconds.ToString("00");
+            StopwatchTime = StopwatchTime.Add(new TimeSpan(0, 0, 0, 0, 100));
         }
 
         /// <summary>
@@ -30,12 +30,12 @@ namespace AlarmClock.Forms
         /// </summary>
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            stopwatchTime = new TimeSpan(0, 0, 0);
+            StopwatchTime = new TimeSpan(0, 0, 0);
             StartBtn.Hide();
             StopBtn.Show();
             EndBtn.Show();
             StopwatchTimer.Start();
-            StopwatchLabel.Text = stopwatchTime.Hours.ToString("00") + ":" + stopwatchTime.Minutes.ToString("00") + ":" + stopwatchTime.Seconds.ToString("00");
+            StopwatchLabel.Text = StopwatchTime.Hours.ToString("00") + ":" + StopwatchTime.Minutes.ToString("00") + ":" + StopwatchTime.Seconds.ToString("00");
         }
 
         /// <summary>
@@ -65,6 +65,9 @@ namespace AlarmClock.Forms
             Reset();
         }
 
+        /// <summary>
+        /// 重設
+        /// </summary>
         private void Reset()
         {
             StatusLabel.Text = "";

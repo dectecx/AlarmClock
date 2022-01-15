@@ -199,7 +199,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(267, 29);
             this.EmailTextBox.TabIndex = 16;
-            this.EmailTextBox.Text = "請輸入Email@gmail.com";
+            this.EmailTextBox.Text = "Email@gmail.com";
             // 
             // AlarmClockLabel
             // 

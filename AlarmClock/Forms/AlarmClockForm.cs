@@ -163,8 +163,8 @@ namespace AlarmClock.Forms
         /// </summary>
         private void HourComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int hour = Convert.ToInt32(HourComboBox.SelectedItem);
-            int minute = Convert.ToInt32(MinuteComboBox.SelectedItem);
+            int hour = (int)HourComboBox.SelectedItem;
+            int minute = (int)MinuteComboBox.SelectedItem;
             AlarmTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 0);
         }
 
@@ -173,8 +173,8 @@ namespace AlarmClock.Forms
         /// </summary>
         private void MinuteComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int hour = Convert.ToInt32(HourComboBox.SelectedItem);
-            int minute = Convert.ToInt32(MinuteComboBox.SelectedItem);
+            int hour = (int)HourComboBox.SelectedItem;
+            int minute = (int)MinuteComboBox.SelectedItem;
             AlarmTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 0);
         }
     }
