@@ -152,14 +152,14 @@
             // 
             // StatusLabel
             // 
-            this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.StatusLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.StatusLabel.Location = new System.Drawing.Point(219, 160);
+            this.StatusLabel.Location = new System.Drawing.Point(40, 147);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(34, 17);
+            this.StatusLabel.Size = new System.Drawing.Size(248, 23);
             this.StatusLabel.TabIndex = 11;
             this.StatusLabel.Text = "狀態";
+            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CountdownForm
             // 

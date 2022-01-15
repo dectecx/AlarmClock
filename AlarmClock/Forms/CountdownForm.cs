@@ -82,6 +82,7 @@ namespace AlarmClock.Forms
             countdownTime = new TimeSpan(hour, minute, second);
             if (countdownTime.TotalSeconds > 0)
             {
+                StatusLabel.Text = "";
                 StartBtn.Hide();
                 StopBtn.Show();
                 EndBtn.Show();

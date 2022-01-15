@@ -58,12 +58,6 @@
     <Compile Include="Forms\DelayCloseForm.Designer.cs">
       <DependentUpon>DelayCloseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ClockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ClockForm.Designer.cs">
-      <DependentUpon>ClockForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CountdownForm.cs">
       <SubType>Form</SubType>
     </Compile>
